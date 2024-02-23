@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { MdDelete } from "react-icons/md"
 import { toast } from 'react-toastify';
+import { BASE_API_URL } from '../lib/constant';
 
 
 const Deletepost = ({ uid }) => {
@@ -13,7 +14,7 @@ const Deletepost = ({ uid }) => {
         if (confirm("Do you really want to delete post?")) {
             try {
 
-                let res = await fetch("http://localhost:3000/api/post/" + uid, {
+                let res = await fetch(`${BASE_API_URL}/api/post/` + uid, {
                     method: "DELETE"
                 })
 

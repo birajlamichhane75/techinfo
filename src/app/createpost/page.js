@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Navbar from '../../../components/Navbar';
+import { BASE_API_URL } from '../../../lib/constant';
 
 
 
@@ -45,7 +46,7 @@ const Createposst = () => {
         }
         else {
             try {
-                let res = await fetch("http://localhost:3000/api/post", {
+                let res = await fetch(`${BASE_API_URL}/api/post/`, {
                     method: "POST",
                     body: JSON.stringify({ title, post, field, img})
                 })

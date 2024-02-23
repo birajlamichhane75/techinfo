@@ -6,6 +6,9 @@ import { Russo_One } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 import { TbLogout2 } from "react-icons/tb";
 import { IoArrowBackCircle } from "react-icons/io5";
+import { useSelector } from 'react-redux';
+
+
 
 const russo = Russo_One({
     weight: '400',
@@ -14,6 +17,9 @@ const russo = Russo_One({
 })
 const Navbar = ({ name }) => {
     let pathname = usePathname()
+  
+
+    
     return (
         <>
             <div className="flex items-center justify-between py-5 border-b border-slate-700">

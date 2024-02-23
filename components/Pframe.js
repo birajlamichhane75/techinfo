@@ -45,7 +45,10 @@ const Pframe = ({ _id, title, post, field, img }) => {
 
                     {img ? 
                 <div className='w-full min-h-80 relative'>
-                    <Image src={`/${img}`} alt={title} fill className='rounded-md object-cover object-top ' />
+                    <Image src={`/${img}`} alt={title}
+                     fill 
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px)"
+                     className='rounded-md object-cover object-top ' />
                 </div>:
                     <></>
                     }

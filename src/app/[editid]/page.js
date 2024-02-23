@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Navbar from '../../../components/Navbar';
+import { BASE_API_URL } from '../../../lib/constant';
 
 
 const Editpost = ({ params }) => {
@@ -16,7 +17,7 @@ const Editpost = ({ params }) => {
     let getdata = async () => {
         let uid = params.editid;
 
-        let res = await fetch("http://localhost:3000/api/post/" + uid);
+        let res = await fetch(`${BASE_API_URL}/api/post/` + uid);
         res = await res.json();
 
         let dets = await res.data;
@@ -33,7 +34,7 @@ const Editpost = ({ params }) => {
         let uid = params.editid;
 
         try {
-            let res = await fetch("http://localhost:3000/api/post/" + uid, {
+            let res = await fetch(`${BASE_API_URL}/api/post/` + uid, {
                 method: "PUT",
                 body: JSON.stringify({ title, post, field })
             })

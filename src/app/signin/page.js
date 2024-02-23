@@ -2,15 +2,20 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../../components/Navbar';
+import { useDispatch } from 'react-redux';
+import { adduser } from '../redux/slice';
+
 
 const Signin = () => {
     let { push } = useRouter();
     const [name, setname] = useState("");
     const [email, setemail] = useState("")
+    let dispatch = useDispatch();
 
     let userpage = () => {
         if (name != "" && email != "") {
             let fullname = name.split(" ")
+            dispatch(adduser(fullname[0]))
             push(`/dashboard/${fullname[0].toLowerCase()}`)
         }
         else {

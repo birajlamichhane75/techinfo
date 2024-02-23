@@ -2,9 +2,10 @@ import React from 'react';
 import Pframe from '../../components/Pframe';
 import Navbar from '../../components/Navbar';
 import Link from 'next/link';
+import { BASE_API_URL } from '../../lib/constant';
 
 const Home = async () => {
-    let res = await fetch("http://localhost:3000/api/post", { cache: "no-cache" });
+    let res = await fetch(`${BASE_API_URL}/api/post/`, { cache: "no-cache" });
     res = await res.json();
     let result = res.data;
 
