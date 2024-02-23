@@ -18,9 +18,10 @@ export default function RootLayout({ children }) {
           TechInfo
         </title>
       </head>
+
       <body className={inter.className}>
 
-        <div className="w-[50%] mx-auto shadow-lg min-h-[100vh]">
+        <div className="w-[100%] md:w-[50%] mx-auto shadow-lg min-h-[100vh]">
           <div className="px-6 h-full">
             <ToastContainer />
             <Providers>{children}</Providers>
