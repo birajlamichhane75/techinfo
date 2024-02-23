@@ -10,26 +10,30 @@ import { BASE_API_URL } from '../../../lib/constant';
 const Createposst = () => {
     let router = useRouter();
 
+
+
     const [title, settitle] = useState("");
     const [post, setPost] = useState("");
     const [field, setfield] = useState("");
     const [image, setimage] = useState("");
     const [img, setimg] = useState("");
 
-    let uploadimage = async(e) =>{
+
+
+    let uploadimage = async (e) => {
         e.preventDefault();
-        
+
         let data = new FormData();
-        data.set('file',image)
-    
-        let result = await fetch("api/upload",{
-          method:'POST',
-          body:data
+        data.set('file', image)
+
+        let result = await fetch("api/upload", {
+            method: 'POST',
+            body: data
         })
-        if(result.ok){
+        if (result.ok) {
             alert("Image Uploaded")
         }
-      }
+    }
 
     let submithandler = async () => {
         if (!title || !post || !field) {
@@ -48,10 +52,10 @@ const Createposst = () => {
             try {
                 let res = await fetch(`${BASE_API_URL}/api/post/`, {
                     method: "POST",
-                    body: JSON.stringify({ title, post, field, img})
+                    body: JSON.stringify({ title, post, field, img })
                 })
                 res = await res.json();
-                if(res.success) {
+                if (res.success) {
                     toast.success('Post Uploaded Successfully', {
                         position: "top-center",
                         autoClose: 1500,
@@ -87,11 +91,11 @@ const Createposst = () => {
     }
     return (
         <>
-        {
-          <div>
-            <Navbar />
-          </div>
-          }
+            {
+                <div>
+                    <Navbar />
+                </div>
+            }
             <div className='flex flex-col gap-4 mt-8'>
                 <label>Title</label>
                 <input
