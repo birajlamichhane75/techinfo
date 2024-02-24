@@ -35,8 +35,8 @@ const Navbar = ({ name }) => {
             <div className="flex items-center justify-between py-5 border-b border-slate-700">
                 <div className=''>
                     {
-                        pathname != '/' && pathname != `/dashboard/${name}` ?
-                            <Link href={`../dashboard/biraj`}><IoArrowBackCircle className='text-4xl' /></Link> :
+                        pathname != '/' && pathname != `/dashboard/${name}` && pathname != "/signin"?
+                            <Link href={`/dashboard/${sessionStorage.getItem("name")}`}><IoArrowBackCircle className='text-4xl' /></Link> :
                             <></>
                     }
                     <h1 className={`${russo.className} text-blue-950`}>TechInfo</h1>
@@ -56,7 +56,7 @@ const Navbar = ({ name }) => {
                         }
                     </Link>
                     {
-                        name ? <><h1 className={`${russo.className} text-black capitalize`}>{name}</h1>
+                        name ? <><h1 className={`${russo.className} text-black capitalize`}>{sessionStorage.getItem("name")}</h1>
                             <Link href='/signin' className='md:block hidden'><TbLogout2 className='text-2xl' /></Link>
                         </> :
                             <Link href='/signin'>

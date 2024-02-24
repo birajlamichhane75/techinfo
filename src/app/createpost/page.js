@@ -68,7 +68,7 @@ const Createposst = () => {
                     });
 
                     setTimeout(() => {
-                        router.push("/dashboard/biraj")
+                        router.push(`/dashboard/${sessionStorage.getItem("name")}`)
                         router.refresh();
 
                     }, 1500);

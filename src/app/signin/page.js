@@ -15,6 +15,8 @@ const Signin = () => {
     let userpage = () => {
         if (name != "" && email != "") {
             let fullname = name.split(" ")
+            sessionStorage.setItem("name",fullname[0])
+            sessionStorage.setItem("email",email)
             dispatch(adduser(fullname[0]))
             push(`/dashboard/${fullname[0].toLowerCase()}`)
         }
@@ -37,7 +39,7 @@ const Signin = () => {
                             setname(e.target.value)
                         }}
 
-                        value={name} type="text" placeholder='Your Name' />
+                        value={name} type="text" placeholder='Your Name' required/>
                     <input
                         onChange={(e) => {
                             setemail(e.target.value)
