@@ -15,6 +15,7 @@ h3{
 
 .btn{
   @apply px-3 py-2 bg-slate-300 font-semibold rounded-md shadow-sm
+  
 }
 
 input{

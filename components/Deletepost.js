@@ -6,21 +6,38 @@ import { toast } from 'react-toastify';
 import { BASE_API_URL } from '../lib/constant';
 
 
-const Deletepost = ({ uid }) => {
-
+const Deletepost = ({ uid ,email}) => {
+    
     const router = useRouter();
 
     let deletehandler = async () => {
-        if (confirm("Do you really want to delete post?")) {
-            try {
-
-                let res = await fetch(`${BASE_API_URL}/api/post/` + uid, {
-                    method: "DELETE"
-                })
-
-                res = await res.json();
-                if (res.success) {
-                    toast.success('Post Deleted Successfully', {
+        if (localStorage.getItem("email") == "birajlamichhane57@gmail.com" || localStorage.getItem("email") == email ){
+            if (confirm("Do you really want to delete post?")) {
+                try {
+    
+                    let res = await fetch(`${BASE_API_URL}/api/post/` + uid, {
+                        method: "DELETE"
+                    })
+    
+                    res = await res.json();
+                    if (res.success) {
+                        toast.success('Post Deleted Successfully', {
+                            position: "top-center",
+                            autoClose: 1500,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+    
+                        setTimeout(() => {
+                            router.refresh()
+                        }, 1500);
+                    }
+                } catch (error) {
+                    toast.error('Something error, Please check again', {
                         position: "top-center",
                         autoClose: 1500,
                         hideProgressBar: false,
@@ -29,26 +46,15 @@ const Deletepost = ({ uid }) => {
                         draggable: true,
                         progress: undefined,
                         theme: "dark",
-                    });
-
-                    setTimeout(() => {
-                        router.refresh()
-                    }, 1500);
+                        });
+                    console.log("Cannot delete", error)
                 }
-            } catch (error) {
-                toast.error('Something error, Please check again', {
-                    position: "top-center",
-                    autoClose: 1500,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    });
-                console.log("Cannot delete", error)
             }
         }
+            else{
+                alert("Only owner of this page can access this property")
+            }
+        
     }
     return (
         <>

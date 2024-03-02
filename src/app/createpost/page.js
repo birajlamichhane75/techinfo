@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Navbar from '../../../components/Navbar';
 import { BASE_API_URL } from '../../../lib/constant';
@@ -11,13 +11,20 @@ const Createposst = () => {
     let router = useRouter();
 
 
-
+    const [username, setusername] = useState("");
+    const [useremail, setuseremail] = useState();
     const [title, settitle] = useState("");
     const [post, setPost] = useState("");
     const [field, setfield] = useState("");
     const [image, setimage] = useState("");
     const [img, setimg] = useState("");
 
+    useEffect(() => {
+        setusername(localStorage.getItem("name"))
+        setuseremail(localStorage.getItem("email"))
+    }, []);
+
+   
 
 
     let uploadimage = async (e) => {
@@ -52,7 +59,7 @@ const Createposst = () => {
             try {
                 let res = await fetch(`${BASE_API_URL}/api/post/`, {
                     method: "POST",
-                    body: JSON.stringify({ title, post, field, img })
+                    body: JSON.stringify({ title, post, field, img, username, useremail })
                 })
                 res = await res.json();
                 if (res.success) {
@@ -68,7 +75,7 @@ const Createposst = () => {
                     });
 
                     setTimeout(() => {
-                        router.push(`/dashboard/${sessionStorage.getItem("name")}`)
+                        router.push(`/dashboard/biraj`)
                         router.refresh();
 
                     }, 1500);

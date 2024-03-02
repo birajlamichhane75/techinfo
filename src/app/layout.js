@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "../../components/Navbar";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { Providers } from "./redux/provider";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +23,7 @@ export default function RootLayout({ children }) {
         <div className="w-[100%] md:w-[50%] mx-auto shadow-lg min-h-[100vh]">
           <div className="px-6 h-full">
             <ToastContainer />
-            <Providers>{children}</Providers>
+            {children}
           </div>
         </div>
 

@@ -8,8 +8,7 @@ import { BASE_API_URL } from '../../../lib/constant';
 
 
 const Editpost = ({ params }) => {
-    const router = useRouter()
-
+    const router = useRouter();
     const [title, settitle] = useState("");
     const [post, setPost] = useState("");
     const [field, setfield] = useState("");
@@ -53,7 +52,7 @@ const Editpost = ({ params }) => {
                 });
 
                 setTimeout(() => {
-                    router.push(`/dashboard/${sessionStorage.getItem("name")}`)
+                    router.push(`/dashboard/biraj`)
                     router.refresh()
                 }, 2000);
             }
