@@ -13,8 +13,11 @@ const Signin = () => {
     let userpage = () => {
         if (name != "" && email != "") {
             let fullname = name.split(" ")
+
+            if (typeof window !== 'undefined') {
             localStorage.setItem("name",fullname[0])
             localStorage.setItem("email",email)
+            }
             push(`/dashboard/${fullname[0].toLowerCase()}`)
         }
         else {
