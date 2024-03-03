@@ -1,17 +1,23 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdDelete } from "react-icons/md"
 import { toast } from 'react-toastify';
 import { BASE_API_URL } from '../lib/constant';
 
 
 const Deletepost = ({ uid ,email}) => {
-    
     const router = useRouter();
+    const [localemail, setlocalemail] = useState("");
+
+    useEffect(() => {
+        setlocalemail(localStorage.getItem("email"))
+    }, []);
+
+    
 
     let deletehandler = async () => {
-        if (localStorage.getItem("email") == "birajlamichhane57@gmail.com" || localStorage.getItem("email") == email ){
+        if (localemail == "birajlamichhane57@gmail.com" || localemail == email ){
             if (confirm("Do you really want to delete post?")) {
                 try {
     

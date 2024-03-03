@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoIosAddCircle } from "react-icons/io";
 import { Russo_One } from 'next/font/google';
 import { usePathname } from 'next/navigation';
@@ -19,6 +19,11 @@ const Navbar = ({name}) => {
     const dropref = useRef()
     let pathname = usePathname()
 
+    const [localname, setLocalname] = useState("");
+    useEffect(() => {
+        setLocalname(localStorage.getItem("name"))
+    }, []);
+
 
     let dropdown = () => {
         if (dropref.current.style.display === "flex") {
@@ -36,7 +41,7 @@ const Navbar = ({name}) => {
                 <div className=''>
                     {
                         pathname != '/' && pathname != `/dashboard/biraj` && pathname != "/signin"?
-                            <Link href={`/dashboard/${localStorage.getItem("name")}`}><IoArrowBackCircle className='text-4xl' /></Link> :
+                            <Link href={`/dashboard/${localname}`}><IoArrowBackCircle className='text-4xl' /></Link> :
                             <></>
                     }
                     <h1 className={`${russo.className} text-blue-950`}>TechInfo</h1>

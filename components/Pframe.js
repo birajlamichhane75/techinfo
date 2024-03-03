@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BsThreeDots } from "react-icons/bs";
 import { MdEdit } from "react-icons/md"
 import Deletepost from './Deletepost';
@@ -10,13 +10,22 @@ import { usePathname, useRouter } from 'next/navigation';
 
 
 const Pframe = ({ _id, title, post, field, img, username, email }) => {
+    const [localname, setlocalname] = useState("");
+    const [localemail, setlocalemail] = useState("");
+
+    useEffect(() => {
+        setlocalemail((localStorage.getItem("email")))
+
+    }, []);
+
+    
     let path = usePathname();
     let { push } = useRouter()
     let menuref = useRef();
     
     let displaymenu = () => {
         if(path !== "/"){
-            if (localStorage.getItem("email") !== "birajlamichhane57@gmail.com" && localStorage.getItem("email") !== email ) {
+            if (localemail !== "birajlamichhane57@gmail.com" && localemail !== email ) {
                 menuref.current.style.color = "rgb(169, 169, 169)"
             }
     
@@ -36,7 +45,7 @@ const Pframe = ({ _id, title, post, field, img, username, email }) => {
     };
 
     let gotoEditpage = () => {
-        if (localStorage.getItem("email") == 'birajlamichhane57@gmail.com' || localStorage.getItem("email") == email ) {
+        if (localemail == 'birajlamichhane57@gmail.com' || localemail == email ) {
             push(`/${_id}`)
         }
         else {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -11,9 +12,10 @@ const Signin = () => {
     const [email, setemail] = useState("")
 
     let userpage = () => {
+        
         if (name != "" && email != "") {
+            
             let fullname = name.split(" ")
-
             if (typeof window !== 'undefined') {
             localStorage.setItem("name",fullname[0])
             localStorage.setItem("email",email)
@@ -24,6 +26,7 @@ const Signin = () => {
             alert("You Must fill")
         }
     }
+  
 
 
     return (
