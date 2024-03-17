@@ -40,7 +40,7 @@ const Deletepost = ({ uid ,email}) => {
     
                         setTimeout(() => {
                             router.refresh()
-                        }, 1500);
+                        }, 100);
                     }
                 } catch (error) {
                     toast.error('Something error, Please check again', {

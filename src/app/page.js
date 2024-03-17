@@ -21,7 +21,7 @@ const Home = async () => {
             </div>
             {
                 result.length != 0 ?
-                    result.map((e, i) => {
+                    result.slice(0).reverse().map((e, i) => {
                         return <div key={i}>
                             <Pframe _id={e._id} title={e.title} post={e.post} field={e.field} img={e.img} />
                         </div>

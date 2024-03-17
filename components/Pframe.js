@@ -57,11 +57,11 @@ const Pframe = ({ _id, title, post, field, img, username, email }) => {
         <>
             <div className='flex flex-col gap-3 mb-3 border-b-2 py-4'>
                 <div className="w-full flex items-center justify-between relative">
-                    <h5 className='font-bold'>
+                    <div className='flex gap-1'><p>Posted by:</p><h5 className='font-bold'>
                         {
                             username ? username : "User_name"
                         }
-                    </h5>
+                    </h5></div>
 
                     <BsThreeDots
                         onClick={displaymenu}
